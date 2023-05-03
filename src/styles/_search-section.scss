@@ -6,6 +6,8 @@
   height: 30vh;
 }
 
+
+
 h1 {
   font-size: 30px;
   color: $text-color;
@@ -38,9 +40,8 @@ form {
       color: $background-color;
     }
 
-
   }
-
+  
   // change color of input with chromium autocomplete
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -48,9 +49,17 @@ form {
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px $text-color inset !important;
     -webkit-text-fill-color: white;
-
+    
   }
-
+  
+  #search-type{
+    background-color: $text-color;
+    border: none;
+    color: white;
+    outline: none;
+    margin-right: 10px;
+    font-size: 15px;
+  }
 
   button {
     border: none;

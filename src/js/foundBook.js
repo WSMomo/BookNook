@@ -6,30 +6,55 @@ const searchInputText = document.querySelector('#search-input-text');
 export const searchBtn = document.querySelector('#search-btn');
 const booksList = document.querySelector('#books-list');
 const modalInfoBook = document.querySelector('#modal-info-book');
+const searchType = document.querySelector('#search-type');
 let closeModal;
+
+
+
 // initialize empty array to store books
 let books = [];
 
+
+
+
+
+
+
+
 // function to retrieve books from open library
-export function findBook(){
+export function findBook() {
+  
+  let url = '';
+  if (searchType.value === 'subject') {
+    url = `http://openlibrary.org/subjects/${searchInputText.value.trim() || 'cats'}.json`;
+  } else if (searchType.value === 'title') {
+    url = `http://openlibrary.org/search.json?title=${searchInputText.value.trim()}`;
+  }
+
   books = [];
   const config = {
     headers: {
       Accept: 'application/json'
     }
-  }
+  };
+
   axios
-  .get(`http://openlibrary.org/subjects/${searchInputText.value || 'cats'}.json`, config)
-  .then(res=>{
-    books = books.concat(res.data.works);
-    renderBookList(books);
-
-  })
-  .catch(err =>{
-    console.log(err)
-  })
-
+    .get(url, config)
+    .then(res => {
+      
+      if (searchType.value === 'subject') {
+        books = books.concat(res.data.works);
+      } else if (searchType.value === 'title') {
+        books = books.concat(res.data.docs);
+        console.log(books);
+      }
+      renderBookList(books);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
+
 
 // function to render book list
 function renderBookList(books){
@@ -45,12 +70,26 @@ function renderBookList(books){
 
 // function to create book preview html
 function createBookPreview(book) {
-  const authorName = book.authors[0].name;
-  return `<div class="book-preview" data-book-id="${book.key}" data-author-name="${authorName}">
+  let authorName;
+  let bookKey;
+  let bookCoverId;
+  let bookTitle;
+  if (searchType.value === 'subject') {
+    authorName = book.authors[0].name;
+    bookTitle = book.title;
+    bookCoverId = book.cover_id;
+    bookKey = book.key;
+  } else if (searchType.value === 'title') {
+    authorName = book.author_name;
+    bookTitle = book.title;
+    bookCoverId = book.cover_i;
+    bookKey = book.key;
+  }
+  return `<div class="book-preview" data-book-id="${bookKey}" data-author-name="${authorName}">
     <figure>
-      <img src="https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg" alt="${book.title}" class="preview-pic">
+      <img src="https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg" alt="${bookTitle}" class="preview-pic">
     </figure>
-    <div class="book-title">${book.title}</div>
+    <div class="book-title">${bookTitle}</div>
     <div class="book-author">${authorName}</div>
   </div>`
 }
@@ -69,10 +108,11 @@ function addBookEventListeners() {
           if(typeof bookData.description === 'object'){
             bookData.description = bookData.description.value;
           }
+          console.log(bookData);
           modalInfoBook.querySelector('.modal-title').textContent = bookData.title;
           modalInfoBook.querySelector('.modal-author').textContent = `By ${authorName}`;
           modalInfoBook.querySelector('.modal-description').textContent = bookData.description || 'No description available';
-          modalInfoBook.querySelector('.modal-img').src = `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg`;
+          modalInfoBook.querySelector('.modal-img').src = bookData.covers && bookData.covers.length > 0 ? `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg` : '';
           modalInfoBook.style.display = 'flex';
           closeModal = document.querySelector('#close-modal');
           closeModal.addEventListener('click', () => {
