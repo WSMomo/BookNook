@@ -1,0 +1,53 @@
+#search-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 30vh;
+}
+
+h1{
+  font-size: 30px;
+  color: $text-color;
+  margin-bottom: 10px;
+  letter-spacing: 4px;
+}
+
+h2{
+  font-size: 18px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+form{
+  padding: 10px 20px;
+  background-color: $text-color;
+  border-radius: 25px;
+  input{
+    border: none;
+    outline: none;
+    background-color: $text-color;
+    color: white;
+    font-size: 18px;
+    padding: 2px;
+    
+    &::placeholder{
+      color: $background-color;
+    }
+
+  }
+
+  button{
+    background-color: transparent;
+    border: none;
+    background-color: $background-color;
+    color: $text-color;
+    border-radius: 20px;
+    outline: none;
+    padding: 8px 10px;
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}
+
+

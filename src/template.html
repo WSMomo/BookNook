@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+  <section id="search-section">
+    <h1>Book Nook</h1>
+    <h2>A bookworm's paradise</h2>
+    <form id="search">
+      <input type="text" id="search-input-text" placeholder="Search a category...">
+      <button id='search-btn' type="submit">Search</button>
+    </form>
+  </section>
+  <section id="books-list">
+  </section>
+
+  <div id="modal-info-book">
+      <figure>
+        <img class="modal-img" src="" alt="">
+      </figure>
+      <div class="modal-title"></div>
+      <div class="modal-author"></div>
+      <div class="modal-description"></div>
+      <div id="close-modal">X</div>
+  </div>
+  
+
+
+
+  <script src="./bundle.js"></script>
+</body>
+</html>

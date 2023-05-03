@@ -1,0 +1,55 @@
+#modal-info-book {
+  width: 350px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  min-height: fit-content;
+  max-height: 650px;
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+  background-color: $background-color;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    padding: 20px;
+
+    figure {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    img {
+      object-fit: cover;
+      width: 250px;
+      padding: 10px;
+    }
+}
+
+  .modal-description {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+  }
+
+  }
+
+
+  .modal-title{
+    font-weight: 700;
+  }
+
+
+#close-modal {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 15px 20px;
+  border-radius: 0 10px 0;
+  cursor: pointer;
+}

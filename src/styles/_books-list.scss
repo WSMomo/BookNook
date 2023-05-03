@@ -1,0 +1,69 @@
+#books-list{
+  transition: all 0.75s;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.book-preview{
+  background-color: $text-color;
+  color: $background-color;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  max-width: $max-book-width;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 2px $detail-color;
+  figure{
+    max-width: $max-book-width;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    img{
+      max-width: $max-book-width;
+      border-radius: 10px 10px 0 0;
+      height: 250px;
+      width: $max-book-width;
+    }
+    
+    img:hover{
+      scale: 1.1;
+    }
+  } 
+}
+
+.book-title{
+  font-weight: 700;
+  padding: 5px;
+  max-width: $max-book-width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.book-author{
+  font-weight: 300;
+  padding: 5px;
+  text-align: center;
+}
+
+@media (width >= 576px){
+  #books-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 768px){
+  #books-list{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width >= 992px){
+  #books-list{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
