@@ -25,7 +25,10 @@ form {
   padding: 10px 20px;
   background-color: $text-color;
   border-radius: 25px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   input {
     border: none;
     outline: none;
@@ -35,21 +38,28 @@ form {
     font-size: 18px;
     padding: 2px;
     caret-color: white;
-
+    margin: 10px 0;
+    
     &::placeholder {
       color: $background-color;
+      opacity: 0.7;
+      font-size: 15px;
     }
 
   }
-  
+  @media (width > 968px){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
   // change color of input with chromium autocomplete
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px $text-color inset !important;
-    -webkit-text-fill-color: white;
-    
+    -webkit-text-fill-color: white;   
   }
   
   #search-type{

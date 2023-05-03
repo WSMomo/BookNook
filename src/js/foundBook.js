@@ -14,19 +14,12 @@ let closeModal;
 // initialize empty array to store books
 let books = [];
 
-
-
-
-
-
-
-
 // function to retrieve books from open library
 export function findBook() {
   
   let url = '';
   if (searchType.value === 'subject') {
-    url = `http://openlibrary.org/subjects/${searchInputText.value.trim() || 'cats'}.json`;
+    url = `http://openlibrary.org/subjects/${searchInputText.value.trim()}.json`;
   } else if (searchType.value === 'title') {
     url = `http://openlibrary.org/search.json?title=${searchInputText.value.trim()}`;
   }
