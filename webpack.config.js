@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development', // maggiori info di debug
@@ -20,7 +21,17 @@ module.exports = {
     open: true,
     hot: true,
     compress: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://openlibrary.org', // indirizzo del server proxy
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api' // sostituisce "/api" nell'URL con "/api" sulla richiesta proxy
+        },
+        secure: false // permette le richieste non sicure
+      }
+    }
   },
   module: { // regole gestione per diversi tipi di file
     rules: [ 
