@@ -8,9 +8,9 @@ Book nook is a web application that allows users to search for books using the O
 This application uses the [Open Library API]('https://openlibrary.org/developers/api') to search for books.
 
 ## Preview
-![Book Nook](./src/readmeimg/booknookempty.png)
-![Book Search Results](./src/readmeimg/booknooksearchresults.png)
-![Modal Preview](./src/readmeimg/booknookmodal.png)
+![Book Nook](./src/img/readmeimg/booknookempty.png)
+![Book Search Results](./src/img/readmeimg/booknooksearchresults.png)
+![Modal Preview](./src/img/readmeimg/booknookmodal.png)
 
 ## Technologies Used
 
