@@ -47,7 +47,7 @@ function renderBookList(books) {
   addBookEventListeners();
 }
 
-// function for create HTML for the modal book preview
+// function for create HTML for books preview
 function createBookPreview(book) {
   const authorName = getAuthorName(book);
   const bookKey = book.key;
@@ -87,7 +87,8 @@ function getBookCoverId(book) {
 // function to choose between undefined cover and default cover
 function getBookCoverImageUrl(bookCoverId) {
   const imgUrl = `https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg`;
-  return bookCoverId === undefined
+  console.log(bookCoverId)
+  return bookCoverId === null
     ? defaultImageUrl
     : imgUrl;
 }
