@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development', // maggiori info di debug
@@ -55,7 +55,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpeg|jpg|gif)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -76,6 +76,11 @@ module.exports = {
         filename: 'index.html',
         template: 'src/template.html'
       }
-    )
+    ),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/img', to: 'images' }
+      ]
+    })
   ]
 }
