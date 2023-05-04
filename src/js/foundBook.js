@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { searchInputText, modalInfoBook, searchType, SUBJECT_URL, TITLE_URL, defaultImageUrl } from './globals.js';
-import { showResults } from './render.js';
+import { showResults, showNetworkMessage } from './render.js';
 let closeModal;
 // initialize an empty array to store books
 let books = [];
@@ -8,11 +8,12 @@ let books = [];
 // function to find books on open library
 export function findBook() {
   let url = '';
+  let searchInputTextValue = searchInputText.value.trim().toLowerCase();
   // determine the url based on the selected search type
   if (searchType.value === 'subject') {
-    url = `${SUBJECT_URL}/${searchInputText.value.trim()}.json`;
+    url = `${SUBJECT_URL}/${searchInputTextValue}.json`;
   } else if (searchType.value === 'title') {
-    url = `${TITLE_URL}?title=${searchInputText.value.trim()}`;
+    url = `${TITLE_URL}?title=${searchInputTextValue}`;
   }
 
   // reset the books array
@@ -41,6 +42,7 @@ export function findBook() {
     })
     .catch(err => {
       console.log(err);
+      showNetworkMessage();
     });
 }
 
@@ -67,10 +69,12 @@ export function addBookEventListeners() {
         })
         .catch(err => {
           console.log(err)
+          showNetworkMessage();
         });
     });
   });
 }
+
 
 
 // hide the modal

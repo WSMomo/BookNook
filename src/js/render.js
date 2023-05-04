@@ -1,29 +1,39 @@
 import { booksList, errorMessage, searchType } from "./globals.js";
 import { addBookEventListeners } from "./foundBook.js";
 
-// show search results on the page
+// function to show search results on the page
 export function showResults(books) {
+  console.log(books)
   if (books.length > 0) {
     showBooksList();
     renderBookList(books);
   } else {
     hideBooksList();
-    showErrorMessage();
+    showNoBooksErrorMessage();
   }
 }
-// show the list of books on the page
+// function to show the list of books on the page
 function showBooksList(){
+  errorMessage.style.display = "none";
   booksList.style.display = 'grid';
 }
 
-// hide the list of books from the page
+// function to hide the list of books from the page
 function hideBooksList() {
   booksList.style.display = 'none';
 }
-// show error message on the page
-function showErrorMessage() {
+// function to show error message on the page if there aren't any books
+function showNoBooksErrorMessage() {
+  errorMessage.style.display  = 'block';
   errorMessage.innerText = 'Sorry, no books were found.';
 }
+
+// function to show error message on the page in case of server or other errors
+export function showNetworkMessage(){
+  errorMessage.style.display  = 'block';
+  errorMessage.innerText = 'Sorry, an error occurred while retrieving the book information. Please try again later or check your network connection.'
+}
+
 // function to render the list of books on the page
 function renderBookList(books) {
   let html = '';
@@ -37,7 +47,7 @@ function renderBookList(books) {
   addBookEventListeners();
 }
 
-// create HTML for the modal book preview
+// function for create HTML for the modal book preview
 function createBookPreview(book) {
   const authorName = getAuthorName(book);
   const bookKey = book.key;
@@ -56,7 +66,7 @@ function createBookPreview(book) {
   `;
 }
 
-// get the author name base on the search type
+// function to get the author name base on the search type
 function getAuthorName(book) {
   if (searchType.value === 'subject') {
     return book.authors[0]?.name || 'Unknown Author';
@@ -65,7 +75,7 @@ function getAuthorName(book) {
   }
 }
 
-// get the cover based on the search type
+// function to get the cover based on the search type
 function getBookCoverId(book) {
   if (searchType.value === 'subject') {
     return book.cover_id;
@@ -74,7 +84,7 @@ function getBookCoverId(book) {
   }
 }
 
-// choice between undefined cover and default cover
+// function to choose between undefined cover and default cover
 function getBookCoverImageUrl(bookCoverId) {
   const imgUrl = `https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg`;
   const defaultImageUrl = 'https://via.placeholder.com/150';
