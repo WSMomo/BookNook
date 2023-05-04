@@ -87,7 +87,8 @@ function getBookCoverId(book) {
 // function to choose between undefined cover and default cover
 function getBookCoverImageUrl(bookCoverId) {
   const imgUrl = `https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg`;
-  return bookCoverId === null
-    ? defaultImageUrl
-    : imgUrl;
+  if(bookCoverId === undefined || bookCoverId === null){
+    return defaultImageUrl
+  }
+  return imgUrl;
 }
