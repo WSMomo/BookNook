@@ -79,7 +79,7 @@ module.exports = {
     ),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/img/footer', to: 'images/footer' }
+        { from: 'src/img/template', to: 'images/template' }
       ]
     })
   ]
