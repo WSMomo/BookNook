@@ -1,4 +1,4 @@
-import { booksList, defaultImageUrl, errorMessage, searchType } from "./globals.js";
+import { booksList, defaultImageUrl, errorMessage, searchType, modalInfoBook } from "./globals.js";
 import { addBookEventListeners } from "./foundBook.js";
 
 // function to show search results on the page
@@ -93,4 +93,19 @@ function getBookCoverImageUrl(bookCoverId) {
     return defaultImageUrl
   }
   return imgUrl;
+}
+
+// update the modal with book info
+export function updateModal(bookData, authorName){
+  modalInfoBook.querySelector('.modal-title').textContent = bookData.title;
+  modalInfoBook.querySelector('.modal-author').textContent = `By ${authorName}`;
+  modalInfoBook.querySelector('.modal-description').textContent = bookData.description || 'No description available';
+  modalInfoBook.querySelector('.modal-img').src = bookData.covers ? `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg` : defaultImageUrl;
+  modalInfoBook.style.display = 'flex';
+}
+
+
+// hide the modal
+export function hideModal(){
+  modalInfoBook.style.display = 'none';
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { searchInputText, modalInfoBook, searchType, SUBJECT_URL, TITLE_URL, defaultImageUrl } from './globals.js';
-import { showResults, showNetworkMessage } from './render.js';
+import { searchInputText, searchType, SUBJECT_URL, TITLE_URL } from './globals.js';
+import { showResults, showNetworkMessage, updateModal, hideModal } from './render.js';
 let closeModal;
 // initialize an empty array to store books
 let books = [];
@@ -76,10 +76,6 @@ export function addBookEventListeners() {
 
 
 
-// hide the modal
-function hideModal(){
-  modalInfoBook.style.display = 'none';
-}
 
 // check if description exist
 function checkDescription(bookData){
@@ -88,11 +84,3 @@ function checkDescription(bookData){
   }
 }
 
-// update the modal with book info
-function updateModal(bookData, authorName){
-  modalInfoBook.querySelector('.modal-title').textContent = bookData.title;
-  modalInfoBook.querySelector('.modal-author').textContent = `By ${authorName}`;
-  modalInfoBook.querySelector('.modal-description').textContent = bookData.description || 'No description available';
-  modalInfoBook.querySelector('.modal-img').src = bookData.covers ? `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg` : defaultImageUrl;
-  modalInfoBook.style.display = 'flex';
-}

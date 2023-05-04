@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  mode: 'development', // maggiori info di debug
+  mode: 'development', // enable more debugging information
   entry: {
     bundle: path.resolve(__dirname, 'src/js/index.js'),
   },
@@ -13,8 +13,8 @@ module.exports = {
     filename: '[name].js',
     clean: true,
   },
-  devtool: 'source-map', // facilita debugging
-  devServer: { // opzioni server di sviluppo
+  devtool: 'source-map', //enable source-map for easier debugging
+  devServer: { // options for the development server
     static: {
       directory: path.resolve(__dirname, 'dist'),
     },
@@ -25,16 +25,16 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       '/api': {
-        target: 'http://openlibrary.org', // indirizzo del server proxy
+        target: 'http://openlibrary.org', // address of the proxy server
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '/api' // sostituisce "/api" nell'URL con "/api" sulla richiesta proxy
+          '^/api': '/api' // replace "/api" in the URL with "/api" in the proxy request
         },
-        secure: false // permette le richieste non sicure
+        secure: false // allow insecure requests
       }
     }
   },
-  module: { // regole gestione per diversi tipi di file
+  module: { // rules for handling different file types
     rules: [ 
       { 
         test: /\.scss$/,
@@ -44,7 +44,7 @@ module.exports = {
           'sass-loader',
         ]
       },
-      // compatibilità per vecchi browser
+      // compatibility for older browsers
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -71,7 +71,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin( // genera file html
+    new HtmlWebpackPlugin( // generates an html file
       {
         title: 'Book Nook',
         filename: 'index.html',
@@ -84,12 +84,5 @@ module.exports = {
       ]
     }),
     new Dotenv(),
-      // resolve: {
-  //   fallback: {
-  //     fs: false,
-  //     path: false,
-  //     os: false
-  //   }
-  // },
   ],
 }
