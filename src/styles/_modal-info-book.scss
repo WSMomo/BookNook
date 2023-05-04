@@ -15,8 +15,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    padding: 20px;
-
+  padding: 20px;
+  
+  @media (width >= 576px){
+    width: 450px;
+  }
     figure {
     width: 250px;
     display: flex;
@@ -45,6 +48,7 @@
     font-weight: 700;
     font-size: 18px;
   }
+
 
 
 #close-modal {

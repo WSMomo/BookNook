@@ -1,4 +1,4 @@
-import { booksList, errorMessage, searchType } from "./globals.js";
+import { booksList, defaultImageUrl, errorMessage, searchType } from "./globals.js";
 import { addBookEventListeners } from "./foundBook.js";
 
 // function to show search results on the page
@@ -87,7 +87,6 @@ function getBookCoverId(book) {
 // function to choose between undefined cover and default cover
 function getBookCoverImageUrl(bookCoverId) {
   const imgUrl = `https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg`;
-  const defaultImageUrl = 'https://via.placeholder.com/150';
   return bookCoverId === undefined
     ? defaultImageUrl
     : imgUrl;
