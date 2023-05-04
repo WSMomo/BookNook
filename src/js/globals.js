@@ -1,4 +1,3 @@
-require('dotenv').config();
 import defaultImage from '../img/default-image.jpg';
 
 // dom elements
