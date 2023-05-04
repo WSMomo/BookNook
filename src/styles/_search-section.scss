@@ -47,7 +47,7 @@ form {
     }
 
   }
-  @media (width > 968px){
+  @media (width >= 576px){
     display: flex;
     justify-content: center;
     align-items: center;
