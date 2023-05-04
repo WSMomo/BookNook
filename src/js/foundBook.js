@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import defaultImage from '../img/default-image.jpg';
 //select dom elements
 export const searchForm = document.querySelector('#search');
 const searchInputText = document.querySelector('#search-input-text');
@@ -78,9 +78,13 @@ function createBookPreview(book) {
     bookCoverId = book.cover_i;
     bookKey = book.key;
   }
+  console.log(bookCoverId)
+  let imageUrl = bookCoverId === undefined ? defaultImage : `https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg`;
+
+
   return `<div class="book-preview" data-book-id="${bookKey}" data-author-name="${authorName}">
     <figure>
-      <img src="https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg" alt="${bookTitle}" class="preview-pic">
+      <img src="${imageUrl}" alt="${bookTitle}" class="preview-pic">
     </figure>
     <div class="book-title">${bookTitle}</div>
     <div class="book-author">${authorName}</div>
@@ -105,7 +109,7 @@ function addBookEventListeners() {
           modalInfoBook.querySelector('.modal-title').textContent = bookData.title;
           modalInfoBook.querySelector('.modal-author').textContent = `By ${authorName}`;
           modalInfoBook.querySelector('.modal-description').textContent = bookData.description || 'No description available';
-          modalInfoBook.querySelector('.modal-img').src = bookData.covers && bookData.covers.length > 0 ? `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg` : '';
+          modalInfoBook.querySelector('.modal-img').src = bookData.covers && bookData.covers.length > 0 ? `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg` : defaultImage;
           modalInfoBook.style.display = 'flex';
           closeModal = document.querySelector('#close-modal');
           closeModal.addEventListener('click', () => {

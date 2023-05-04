@@ -15,7 +15,7 @@ module.exports = {
   devtool: 'source-map', // facilita debugging
   devServer: { // opzioni server di sviluppo
     static: {
-      directory: path.resolve(__dirname, 'dist')
+      directory: path.resolve(__dirname, 'dist'),
     },
     port: 3000,
     open: true,
@@ -53,6 +53,19 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              publicPath: 'images/',
+            },
+          },
+        ],
       },
     ]
   },
