@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development', // maggiori info di debug
@@ -81,6 +82,7 @@ module.exports = {
       patterns: [
         { from: 'src/img/template', to: 'images/template' }
       ]
-    })
+    }),
+    new Dotenv(),
   ]
 }
