@@ -4,13 +4,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  resolve: {
-    fallback: {
-      fs: false,
-      path: false,
-      os: false
-    }
-  },
+  // resolve: {
+  //   fallback: {
+  //     fs: false,
+  //     path: false,
+  //     os: false
+  //   }
+  // },
   mode: 'development', // maggiori info di debug
   entry: {
     bundle: path.resolve(__dirname, 'src/js/index.js'),
