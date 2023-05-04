@@ -24,12 +24,14 @@ function hideBooksList() {
 }
 // function to show error message on the page if there aren't any books
 function showNoBooksErrorMessage() {
+  hideBooksList();
   errorMessage.style.display  = 'block';
   errorMessage.innerText = 'Sorry, no books were found.';
 }
 
 // function to show error message on the page in case of server or other errors
 export function showNetworkMessage(){
+  hideBooksList();
   errorMessage.style.display  = 'block';
   errorMessage.innerText = 'Sorry, an error occurred while retrieving the book information. Please try again later or check your network connection.'
 }
