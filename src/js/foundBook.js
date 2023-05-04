@@ -60,7 +60,6 @@ export function addBookEventListeners() {
           // check description
           checkDescription(bookData);
           // update modal with book info
-          console.log(bookData);
           updateModal(bookData, authorName);
 
           // add event listenere to close modal when clicked
