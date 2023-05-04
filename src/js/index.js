@@ -1,4 +1,5 @@
-import { findBook, searchForm } from "./foundBook.js";
+import { findBook } from "./foundBook.js";
+import { searchForm } from "./globals.js";
 import "../styles/main.scss";
 
 searchForm.addEventListener("submit", (event)=>{
