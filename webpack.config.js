@@ -70,6 +70,12 @@ module.exports = {
       },
     ]
   },
+  resolve: {
+    fallback: {
+      "path": require.resolve("path-browserify"),
+      "os": require.resolve("os-browserify/browser")
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin( // generates an html file
       {
