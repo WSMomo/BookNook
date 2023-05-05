@@ -89,6 +89,12 @@ module.exports = {
         { from: 'src/img/template', to: 'images/template' }
       ]
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      silent: true,
+      defaults: false,
+    }),
   ],
 }
