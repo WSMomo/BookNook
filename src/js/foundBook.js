@@ -41,7 +41,6 @@ export function findBook() {
       showResults(books);
     })
     .catch(err => {
-      console.log(err);
       showNetworkMessage();
     });
 }
@@ -67,7 +66,6 @@ export function addBookEventListeners() {
           closeModal.addEventListener('click', hideModal);
         })
         .catch(err => {
-          console.log(err)
           showNetworkMessage();
         });
     });

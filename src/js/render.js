@@ -3,7 +3,6 @@ import { addBookEventListeners } from "./foundBook.js";
 
 // function to show search results on the page
 export function showResults(books) {
-  console.log(books)
   if (books.length > 0) {
     showBooksList();
     renderBookList(books);
