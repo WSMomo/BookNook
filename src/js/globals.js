@@ -1,3 +1,4 @@
+const envConfig = require('../config/env-config.js');
 import defaultImage from '../img/default-image.jpg';
 
 // dom elements
@@ -9,8 +10,8 @@ export const searchType = document.querySelector('#search-type');
 export const errorMessage = document.querySelector('#error-message');
 
 // API urls
-export const SUBJECT_URL = process.env.SUBJECT_URL;
-export const TITLE_URL = process.env.TITLE_URL;
+export const SUBJECT_URL = envConfig.SUBJECT_URL;
+export const TITLE_URL = envConfig.TITLE_URL;
 
 // default image url
 export const defaultImageUrl = defaultImage;
