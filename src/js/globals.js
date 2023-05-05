@@ -1,4 +1,4 @@
-const envConfig = require('../config/env-config.js');
+const envConfig = require('../../config/env-config.js');
 import defaultImage from '../img/default-image.jpg';
 
 // dom elements
