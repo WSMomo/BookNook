@@ -9,8 +9,8 @@ export const searchType = document.querySelector('#search-type');
 export const errorMessage = document.querySelector('#error-message');
 
 // API urls
-export const SUBJECT_URL = 'http://openlibrary.org/subjects';
-export const TITLE_URL = 'http://openlibrary.org/search.json';
+export const SUBJECT_URL = process.env.SUBJECT_URL;
+export const TITLE_URL = process.env.TITLE_URL;
 
 // default image url
 export const defaultImageUrl = defaultImage;
